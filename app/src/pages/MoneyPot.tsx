@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './MoneyPot.css';
 
-function App() {
+function MoneyPot() {
 
   const [transactions, setTransactions] = useState([
     {
@@ -128,4 +128,4 @@ function App() {
 }
 
 
-export default App;
+export default MoneyPot;
