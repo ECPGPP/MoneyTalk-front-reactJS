@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { isPropertySignature } from "typescript";
 
-function Login(props: any){
+function Register(props: any){
     // state
     const[email, setEmail]=useState('');
     const[password, setPassword]=useState('');
+    const[username, setusername]=useState('');
     // behavior
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -14,8 +14,12 @@ function Login(props: any){
     return(
         <div className="auth-form-container">
             <fieldset>
-                <legend>Login</legend>
+                <legend>Register</legend>
                 <form onSubmit={handleSubmit}>
+                        <label htmlFor="username">username</label>
+                        <br />
+                        <input value={username} onChange={(e)=>{setusername(e.target.value)}} id="username" type="text" placeholder="your-username" />
+                        <br />
                         <label htmlFor="email">email</label>
                         <br />
                         <input value={email} onChange={(e)=>{setEmail(e.target.value)}} id="email" type="email" placeholder="youremail@skeggang.net" />
@@ -27,10 +31,10 @@ function Login(props: any){
                         <button>Submit 🤟</button>
                 </form>
             </fieldset>
-            <button onClick={()=>props.onFormSwitch('register')} > Don't have an account ? Register ✍️</button>
+            <button onClick={()=>props.onFormSwitch('login')} >Already have an account ? Login 🤙</button>
         </div>
     )
 
 }
 
-export default Login;
+export default Register

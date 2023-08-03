@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
@@ -16,16 +16,17 @@ const domNode = document.getElementById('root')!;
 const root = createRoot(domNode);
 
 root.render(
-  <Router>
-    <Navbar />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="admin" element={<AdminAccounts />} />
-      <Route path="moneypot" element={<MoneyPot />} />
-      <Route path="login" element={<Login />} />
-    </Routes>
-  </Router>
-
+  <>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="admin" element={<AdminAccounts />} />
+        <Route path="moneypot" element={<MoneyPot />} />
+        <Route path="login" element={<Login />} />
+      </Routes>
+    </Router>
+  </>
 );
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

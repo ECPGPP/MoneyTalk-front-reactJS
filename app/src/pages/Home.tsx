@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import {Login, Register} from "../components/Index";
 
 function Home() {
-    return <h1>this is the homepage</h1>;
+    const [currentForm, setCurrentForm] = useState('login');
+    const toggleForm = (formName:any) => {
+        setCurrentForm(formName);
+    }
+
+    return(
+        <>
+        <h1>Welcome to MoneyTalk ! 💲💬</h1>
+
+        {
+            currentForm === 'login' ? <Login onFormSwitch={toggleForm} />:<Register onFormSwitch={toggleForm} />
+        }
+
+        </>
+    )
+
 }
 export default Home;
