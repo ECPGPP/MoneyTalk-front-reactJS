@@ -16,17 +16,17 @@ const domNode = document.getElementById('root')!;
 const root = createRoot(domNode);
 
 root.render(
-  <>
+  <div className="navbar">
     <Router>
-      <Navbar />
+    <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="admin" element={<AdminAccounts />} />
-        <Route path="moneypot" element={<MoneyPot />} />
+        <Route path="money_pot" element={<MoneyPot />} />
         <Route path="login" element={<Login />} />
       </Routes>
     </Router>
-  </>
+  </div>
 );
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -1,0 +1,8 @@
+.home {
+  /* font-size: bold; */
+}
+.home fieldset {
+  padding: 20px;
+
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+}

@@ -98,8 +98,8 @@ function MoneyPot() {
   }
 
   return (
-    <div>
-      <h1>Welcome to MoneyTalk !</h1>
+    <div className='moneypot'>
+      <h1>Your MoneyPot</h1>
 
       <ul>
         {transactions.map((transaction)=>{
