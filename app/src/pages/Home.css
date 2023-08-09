@@ -1,0 +1,40 @@
+.home {
+  padding: 50px;
+
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.home fieldset {
+  padding: 20px;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+
+}
+/* .mobilehidden{
+  display: inline;
+} */
+
+@media screen {
+  
+}
+
+@media screen and (max-width: 600px) {
+  .home{
+    border: none
+  }
+
+  .mobilehidden{
+    display: none;
+  }
+
+}
+
+.errormsg{
+  display: block;
+  text-align: center;
+  font-size: bold;
+  color: red;
+}
+
+.offscreen{
+  color: black;
+}
