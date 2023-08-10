@@ -1,8 +1,15 @@
 import React, { ChangeEvent, useState } from 'react';
 import logo from './logo.svg';
 import './MoneyPot.css';
-
 import axios from 'axios';
+import MoneyPotMenu from '../components/MoneyPotMenu';
+
+// import AuthContext from '../context/AuthProvider';
+
+console.log('TEST AUTHCONTEXT');
+// console.log(AuthContext);
+console.log('TEST AUTHCONTEXT');
+
 
 // const  rqtest = axios.get('http://localhost:8000/api/money_pot/6').then(res=>{
 //   console.log(res);
@@ -22,46 +29,9 @@ function MoneyPot() {
       Label: "Remboursement prêt",
       Comment: "-"
     },
-    {
-      id: 2,
-      Amount: "500 €",
-      Date: "06/07/23\r18H30",
-      Sender: "me",
-      Recipient: "TravelAgency",
-      Label: "Réservation vol",
-      Comment: "-"
-    },
-    {
-      id: 3,
-      Amount: "800 €",
-      Date: "08/07/23\r11H10",
-      Sender: "me",
-      Recipient: "EDF",
-      Label: "Facture d'électricité",
-      Comment: "-"
-    },
-    {
-      id: 4,
-      Amount: "28 €",
-      Date: "11/07/23\r17H00",
-      Sender: "@TOMA",
-      Recipient: "me",
-      Label: "Cadeau d'anniversaire",
-      Comment: "-"
-    },
-    {
-      id: 5,
-      Amount: "75 €",
-      Date: "10/07/23\r10H15",
-      Sender: "@AliceSmith",
-      Recipient: "me",
-      Label: "remboursement",
-      Comment: "-"
-    }
   ]);
 
   const [newTransaction, setNewTransaction] = useState("");
-
   const [data, setData] = useState('')
   const getMoneyPotDetails = async (id: number)=>{
     try {
@@ -123,6 +93,7 @@ function MoneyPot() {
 
   return (
     <div className='moneypot'>
+      <MoneyPotMenu/>
       <h1>Your MoneyPot</h1>
 
       <ul>

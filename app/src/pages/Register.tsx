@@ -5,6 +5,9 @@ function Register(props: any){
     const[email, setEmail]=useState('');
     const[password, setPassword]=useState('');
     const[username, setusername]=useState('');
+
+    const REGISTER_URL = "/api/register";
+
     // behavior
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -31,7 +34,7 @@ function Register(props: any){
                         <button>Submit 🤟</button>
                 </form>
             </fieldset>
-            <button onClick={()=>props.onFormSwitch('login')} >Already have an account ? Login 🤙</button>
+            <button onClick={()=>props.onFormSwitch('loginForm')} >Already have an account ? Login 🤙</button>
         </div>
     )
 

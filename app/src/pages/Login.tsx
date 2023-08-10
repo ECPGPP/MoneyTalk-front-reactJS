@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
 import { AxiosError } from "axios";
 
-const LOGIN_URL = "/api/login";
+
+const LOGIN_URL = "/api/login_check";
 
 function Login(props: any) {
     // state
@@ -13,11 +16,13 @@ function Login(props: any) {
     const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
-
+    const [cookies, setCookies, removeCookies] = useCookies();
+    const navigate = useNavigate();
+    
     //TODO: pas fifou les useref, to replace
     const userRef: any = useRef();
     const errRef: any = useRef();
-
+    
     // behavior
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -32,13 +37,28 @@ function Login(props: any) {
                     // withCredentials: true
                 }
             );
+            //console.log(response);
             setEmail('')
             setUsername('')
             setPassword('')
             setSuccess(true);
-            const accessToken = response?.data?.accessToken;
+            const accessToken = response?.data?.token;
+
+//TODO: set nice user data from back
             const roles = response?.data?.roles;
-            setAuth({email, password, roles, accessToken});
+            
+            console.log(accessToken, roles);
+            //TODO : setAuth({email, password, roles, accessToken});
+            setAuth({email, accessToken});
+
+            //cookie setup
+            setCookies('token', accessToken)
+            // setCookies('username', accessToken)
+
+            //redirect to MoneyPot/
+            navigate('/money_pot');
+
+
         } catch (err: unknown) {
             if(err instanceof AxiosError){
                 if(err.response?.status === 400){
@@ -116,7 +136,7 @@ function Login(props: any) {
                     <button>Submit 🤟</button>
                 </form>
             </fieldset>
-            <button onClick={() => props.onFormSwitch('register')} > Don't have an account ? Register ✍️</button>
+            <button onClick={() => props.onFormSwitch('registerForm')} > Don't have an account ? Register ✍️</button>
         </div>
     )
 
