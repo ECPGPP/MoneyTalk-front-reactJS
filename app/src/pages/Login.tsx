@@ -3,12 +3,13 @@ import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
 import { AxiosError } from "axios";
 
-const LOGIN_URL = "/auth";
+const LOGIN_URL = "/api/login";
 
 function Login(props: any) {
     // state
     const setAuth: any = useContext(AuthContext);
     const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
@@ -20,22 +21,21 @@ function Login(props: any) {
     // behavior
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-
         try {
             const response = await axios.post(
                 LOGIN_URL,
-                JSON.stringify({ email, password }),
+                JSON.stringify({ username, password }),
                 {
                     headers: { 'Content-Type': 'application/json' },
+                    // CORS handling EZ, to rework
                     withCredentials: false
                     // withCredentials: true
                 }
             );
             setEmail('')
+            setUsername('')
             setPassword('')
             setSuccess(true);
-            console.log(JSON.stringify(response?.data))
-            // console.log(JSON.stringify(response))
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
             setAuth({email, password, roles, accessToken});
@@ -61,6 +61,7 @@ function Login(props: any) {
     const handleChange = (e: any) => {
         if (e.target.id === 'email') {
             setEmail(e.target.value)
+            setUsername(e.target.value);
         } else if (e.target.id === 'password') {
             setPassword(e.target.value)
         }
@@ -101,7 +102,6 @@ function Login(props: any) {
                         onChange={handleChange}
                         placeholder="youremail@skeggang.net"
                         required />
-                    {/* <input value={email} onChange={(e)=>{setEmail(e.target.value)}} id="email" type="email" placeholder="youremail@skeggang.net" /> */}
                     <br />
                     <label htmlFor="password">password</label>
                     <br />
@@ -112,7 +112,6 @@ function Login(props: any) {
                         onChange={handleChange}
                         placeholder="yourpassword"
                         required />
-                    {/* <input value={password} onChange={(e)=>{setPassword(e.target.value)}} id="password" type="password" placeholder="yourpassword" /> */}
                     <br />
                     <button>Submit 🤟</button>
                 </form>

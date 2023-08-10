@@ -2,6 +2,14 @@ import React, { ChangeEvent, useState } from 'react';
 import logo from './logo.svg';
 import './MoneyPot.css';
 
+import axios from 'axios';
+
+// const  rqtest = axios.get('http://localhost:8000/api/money_pot/6').then(res=>{
+//   console.log(res);
+// })
+// console.log('sisi')
+
+
 function MoneyPot() {
 
   const [transactions, setTransactions] = useState([
@@ -53,6 +61,22 @@ function MoneyPot() {
   ]);
 
   const [newTransaction, setNewTransaction] = useState("");
+
+  const [data, setData] = useState('')
+  const getMoneyPotDetails = async (id: number)=>{
+    try {
+      await axios.get('http://localhost:8000/api/money_pot/'+id).then(
+        res => {
+          const data = res.data
+          console.log(data)
+          setData(data)
+        }
+      )
+    } catch (error) {
+      console.log("!oula probleme!")
+      console.log(error)
+    }
+  }
 
   // mais, il est dégueulasse ce type any !
   // methode pas ouf parceque pas de rerender = dangereux.
@@ -123,6 +147,8 @@ function MoneyPot() {
         <button>Add Transaction</button>
       </form>
 
+      <button onClick={() => getMoneyPotDetails(6)}>TEST API</button>
+      <h3>{JSON.stringify(data)}</h3>
     </div>
     );
 }

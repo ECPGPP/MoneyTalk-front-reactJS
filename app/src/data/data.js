@@ -1,3 +1,6 @@
+import axios from "../api/axios";
+// import rq data here
+
 const DATA = [
     {
         email: "admin@admin.com",
