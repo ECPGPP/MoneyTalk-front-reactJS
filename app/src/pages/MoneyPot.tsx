@@ -6,11 +6,6 @@ import MoneyPotMenu from '../components/MoneyPotMenu';
 
 // import AuthContext from '../context/AuthProvider';
 
-console.log('TEST AUTHCONTEXT');
-// console.log(AuthContext);
-console.log('TEST AUTHCONTEXT');
-
-
 // const  rqtest = axios.get('http://localhost:8000/api/money_pot/6').then(res=>{
 //   console.log(res);
 // })
