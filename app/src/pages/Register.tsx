@@ -1,44 +1,51 @@
 import React, { useState } from "react";
 import axios from "../api/axios";
 
+const REGISTER_URL = "/api/register";
+
 function Register(props: any) {
     
     // state
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [username, setusername] = useState('');
+    const [alias, setalias] = useState('');
 
-    const REGISTER_URL = "http://localhost:8000/api/register";
 
     // behavior
-    const handleSubmit = async (email: string, password: string) => {
+    const handleSubmit = async (username: string, password: string) => {
+        
         try {
-            await axios.post(REGISTER_URL, {
-                username: email,
-                password: password
-            }).then(res => {
-                console.log(res)
-                }
-            )
+            const response = await axios.post(
+                REGISTER_URL, 
+                JSON.stringify({ username, password }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    // CORS handling EZ, to rework
+                    withCredentials: false
+                    // withCredentials: true
+            })
         } catch (error) {
+            console.log(JSON.stringify({ username, password }))
+            console.log(username, password)
             console.log("!ERR")
             console.log(error)
         }
     }
+
 
     // render
     return (
         <div className="auth-form-container">
             <fieldset>
                 <legend>Register</legend>
-                <form onSubmit={()=>handleSubmit(email, password)}>
-                    <label htmlFor="username">username</label>
+                <form onSubmit={()=>handleSubmit(username, password)}>
+                    <label htmlFor="alias">alias</label>
                     <br />
-                    <input value={username} onChange={(e) => { setusername(e.target.value) }} id="username" type="text" placeholder="your-username" />
+                    <input value={alias} onChange={(e) => { setalias(e.target.value) }} id="alias" type="text" placeholder="your-alias" />
                     <br />
                     <label htmlFor="email">email</label>
                     <br />
-                    <input value={email} onChange={(e) => { setEmail(e.target.value) }} id="email" type="email" placeholder="youremail@skeggang.net" />
+                    <input value={username} onChange={(e) => { setUsername(e.target.value) }} id="email" type="email" placeholder="youremail@skeggang.net" />
                     <br />
                     <label htmlFor="password">password</label>
                     <br />
@@ -47,7 +54,7 @@ function Register(props: any) {
                     <button>Submit 🤟</button>
                 </form>
             </fieldset>
-            <button onClick={() => props.onFormSwitch('loginForm')} >Already have an account ? Login 🤙</button>
+            <button type="button" onClick={() => props.onFormSwitch('loginForm')} >Already have an account ? Login 🤙</button>
         </div>
     )
 
