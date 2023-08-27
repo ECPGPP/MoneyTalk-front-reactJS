@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Login, Register } from "../components/Index";
-import './Home.css';
+// import './Common.scss';
+import '../assets/Home.scss';
 
 function Home() {
     const [currentForm, setCurrentForm] = useState('loginForm');

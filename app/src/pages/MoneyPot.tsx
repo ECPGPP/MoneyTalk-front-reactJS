@@ -1,11 +1,10 @@
 import React, { ChangeEvent, useState } from 'react';
 import logo from './logo.svg';
-import './MoneyPot.css';
+import '../assets/MoneyPot.scss';
 import axios from 'axios';
 import MoneyPotMenu from '../components/MoneyPotMenu';
 
 // import AuthContext from '../context/AuthProvider';
-
 // const  rqtest = axios.get('http://localhost:8000/api/money_pot/6').then(res=>{
 //   console.log(res);
 // })

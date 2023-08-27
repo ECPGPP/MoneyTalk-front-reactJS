@@ -1,0 +1,25 @@
+.navbar {
+
+    width: 100vw;
+    text-align: center;
+    border: 1px solid cyan;
+
+    a:visited {
+        color: rgb(221, 0, 255);
+    }
+
+    ul {
+        margin: 5px;
+        padding: 5px;
+        list-style: none;
+        display: flex !important;
+        justify-content: space-around !important;
+        border: 1px solid rgb(255, 0, 255);
+
+        li {
+            padding: 5px;
+        }
+    }
+
+
+}

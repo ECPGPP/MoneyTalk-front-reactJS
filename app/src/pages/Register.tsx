@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "../api/axios";
+import '../assets/AuthFormContainer.scss';
+import '../assets/Register.scss';
+
 
 const REGISTER_URL = "/api/register";
 
@@ -9,7 +12,6 @@ function Register(props: any) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [alias, setalias] = useState('');
-
 
     // behavior
     const handleSubmit = async (username: string, password: string) => {
@@ -25,17 +27,14 @@ function Register(props: any) {
                     // withCredentials: true
             })
         } catch (error) {
-            console.log(JSON.stringify({ username, password }))
-            console.log(username, password)
             console.log("!ERR")
             console.log(error)
         }
     }
 
-
     // render
     return (
-        <div className="auth-form-container">
+        <div className="auth-form-container register">
             <fieldset>
                 <legend>Register</legend>
                 <form onSubmit={()=>handleSubmit(username, password)}>

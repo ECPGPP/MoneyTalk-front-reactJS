@@ -4,6 +4,8 @@ import { Cookies, useCookies } from "react-cookie";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
 import { AxiosError } from "axios";
+import '../assets/AuthFormContainer.scss';
+import '../assets/Login.scss';
 
 const LOGIN_URL = "/api/login_check";
 
@@ -53,53 +55,54 @@ function Login(props: any) {
             //cookie setup
             setCookies('token', accessToken)
 
-                //redirect to MoneyPot/
-                navigate('/money_pot');
+            //redirect to MoneyPot/
+            navigate('/money_pot');
 
 
-            } catch (err: unknown) {
-                if (err instanceof AxiosError) {
-                    if (err.response?.status === 400) {
-                        setErrMsg('Missing email or password')
-                    } else if (err.response?.status === 401) {
-                        setErrMsg('Unauthorized')
-                    } else if (err.response?.status === 402) {
-                        setErrMsg('Login Failed');
-                    } else {
-                        setErrMsg('Server Error')
-                    }
-
+        } catch (err: unknown) {
+            if (err instanceof AxiosError) {
+                if (err.response?.status === 400) {
+                    setErrMsg('Missing email or password')
+                } else if (err.response?.status === 401) {
+                    setErrMsg('Unauthorized')
+                } else if (err.response?.status === 402) {
+                    setErrMsg('Login Failed');
+                } else {
+                    setErrMsg('Server Error')
                 }
-                errRef.current.focus();
+
             }
-
-
+            errRef.current.focus();
         }
+
+
+    }
 
     const handleChange = (e: any) => {
-            if (e.target.id === 'email') {
-                setEmail(e.target.value)
-                setUsername(e.target.value);
-            } else if (e.target.id === 'password') {
-                setPassword(e.target.value)
-            }
+        if (e.target.id === 'email') {
+            setEmail(e.target.value)
+            setUsername(e.target.value);
+        } else if (e.target.id === 'password') {
+            setPassword(e.target.value)
         }
+    }
 
-        //here [] is a dependancy array
-        useEffect(() => {
-            if (userRef.current) {
-                userRef.current.focus();
-            }
-        }, [])
+    //here [] is a dependancy array
+    useEffect(() => {
+        if (userRef.current) {
+            userRef.current.focus();
+        }
+    }, [])
 
-        //if email or password is changed, we empty errMsg
-        useEffect(() => {
-            setErrMsg('');
-        }, [email, password])
+    //if email or password is changed, we empty errMsg
+    useEffect(() => {
+        setErrMsg('');
+    }, [email, password])
 
-        // render
-        return (
-            <div className="auth-form-container">
+    // render
+    return (
+        <div className="login">
+            <div className="auth-form-container login">
                 <fieldset>
 
                     {/* aria-live:assertive : announce errMsg immediately to a screen reader */}
@@ -136,8 +139,9 @@ function Login(props: any) {
                 </fieldset>
                 <button onClick={() => props.onFormSwitch('registerForm')} > Don't have an account ? Register ✍️</button>
             </div>
-        )
+        </div>
+    )
 
-    }
+}
 
-    export default Login;
+export default Login;
