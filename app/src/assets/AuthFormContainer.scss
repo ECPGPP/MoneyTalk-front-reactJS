@@ -1,0 +1,32 @@
+.auth-form-container {
+  text-align: justify;
+
+  h1 {
+    color: cyan;
+  }
+
+  button {
+    margin:5px 0;
+    padding: 5px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid cyan;
+    background-color: black;
+    color: cyan;
+  }
+  
+  
+  
+  fieldset {
+    padding: 20px;
+    background: linear-gradient(to right, #434343 0%, black 100%);
+    border-radius: 5px;
+
+    legend{
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+
+}

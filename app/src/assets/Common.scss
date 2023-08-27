@@ -1,0 +1,47 @@
+body {
+    /* base */
+    margin: 0;
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&family=Roboto:ital@0;1&display=swap");
+    font-family: "Open Sans", " Arial", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* gen */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    max-width: 100vw;
+    padding: 10px;
+    text-align: left;
+
+    /* .mobilehidden{
+  display: inline;
+} */
+
+    @media screen {}
+
+    @media screen and (max-width: 600px) {
+        .home {
+            border: none
+        }
+
+        .mobilehidden {
+            display: none;
+        }
+
+    }
+
+    .errormsg {
+        display: block;
+        text-align: center;
+        font-size: bold;
+        color: red;
+    }
+
+    .offscreen {
+        color: black;
+    }
+
+
+
+}
