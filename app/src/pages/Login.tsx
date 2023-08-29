@@ -54,6 +54,7 @@ function Login(props: any) {
 
             //cookie setup
             setCookies('token', accessToken)
+            setCookies('username', username)
 
             //redirect to MoneyPot/
             navigate('/money_pot');

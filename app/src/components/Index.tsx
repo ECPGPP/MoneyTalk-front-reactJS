@@ -12,3 +12,5 @@ export { default as NewTransaction } from '../pages/NewTransaction';
 
 // components
 export { default as Navbar } from '../components/Navbar';
+export { default as MoneyPotMenu } from '../components/MoneyPotMenu';
+export { default as IdentytiDisplayer } from '../components/IdentityDisplayer'

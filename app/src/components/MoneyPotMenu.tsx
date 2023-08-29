@@ -1,4 +1,5 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from 'react-router-dom';
+import '../assets/Logout.scss'
 
 function MoneyPotMenu() {
     return (
