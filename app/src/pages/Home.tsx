@@ -12,6 +12,7 @@ function Home() {
     return (
         <div className="home">
             <h1><span className="mobilehidden"> Welcome to </span>MoneyTalk 💲💬</h1>
+            <h1><span className="mobilereveal">M O B I L E</span></h1>
             {
                 currentForm === 'loginForm' ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
             }

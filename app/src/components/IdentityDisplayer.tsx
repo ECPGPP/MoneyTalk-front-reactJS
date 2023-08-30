@@ -1,20 +1,23 @@
 import React, { useState } from "react";
-import { Cookies, useCookies } from "react-cookie";
+import { Cookies, CookiesProvider, useCookies } from "react-cookie";
+import "../assets/IdentityDisplayer.scss";
 
+function IdentityDisplayer() {
+  const [cookies, setCookies, removeCookies] = useCookies();
 
-function IdentityDisplayer(){
-
-    const [cookies, setCookies, removeCookies] = useCookies();
-    const username = cookies['username'];
-    console.log(username)
-    
-    return(
-        <div>
-            <h4>
-                You are connected as { username }
-            </h4>
+  return (
+    <CookiesProvider>
+      {cookies.username != null ? (
+        <div className="identity-displayer">
+          <h4>You are connected as {cookies.username}</h4>
         </div>
-    )
+      ) : (
+        <div className="identity-displayer">
+          <h4>please login</h4>
+        </div>
+      )}
+    </CookiesProvider>
+  );
 }
 
-export default IdentityDisplayer
+export default IdentityDisplayer;

@@ -6,4 +6,15 @@
     display: block !important;
     list-style: circle;
   }
+
+  table, th, td{
+    text-align: center;
+    border: 1px white solid;
+    border-collapse: collapse;
+    th, td{
+      padding: 10px;
+    }
+  }
+
+
 }

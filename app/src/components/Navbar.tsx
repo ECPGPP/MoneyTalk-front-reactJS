@@ -10,8 +10,12 @@ function Navbar() {
   const navigate = useNavigate()
 
   const handleLogout = () => {
-      removeCookies('username')
       removeCookies('token')
+      removeCookies('email')
+      removeCookies('username')
+      removeCookies('moneyPotId')
+      removeCookies('message')
+      removeCookies('roles')
       navigate('/login')
   }
 
@@ -22,11 +26,8 @@ function Navbar() {
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
         <li><Link to="/money_pot">My Moneypot</Link></li>
+        <button className="auth-form-container button" onClick={handleLogout} > Sign Out ❌ </button>
       </ul>
-
-{/* if current route logine || register don't display logout */}
-      <button className="logout" onClick={handleLogout} > Sign Out ❌ </button>
-
     </nav>
   );
 }
